@@ -1,0 +1,39 @@
+<!--
+
+   Task: Implement function findUnique so it returns array contains all elements of initial array without duplicates. Try to use reduce().
+   Завдання: реалізувати функцію findUnique таким чином, щоб вона повертала масив, що містить усі елементи вихідного масиву без дублікатів. Спробуйте скористатися reduce().
+
+-->
+
+<html>
+<head>
+    <title>JavaScript</title>
+
+    <script type="text/javascript">
+
+        function findUnique(arr) {
+            initialArr.sort((a,b) => a - b);
+            return initialArr.reduce((uniqueArr, currentValue) => {
+                if (uniqueArr.includes(currentValue) == false) {
+                    uniqueArr.push(currentValue);
+                }
+                return uniqueArr;
+            }, []);
+        }
+
+
+        var initialArr = [1, 2, 3, 1, 5, 3, 4, 1];
+
+        var unique = findUnique(initialArr);
+
+        console.log("Initial array: " + initialArr);
+        console.log("</br>");
+        console.log("Unique elements: " + unique);
+        alert (unique);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

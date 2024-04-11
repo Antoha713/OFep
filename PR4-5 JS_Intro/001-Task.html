@@ -1,0 +1,38 @@
+<!--
+
+   Task: implement function findDuplicates so it returns array containce duplicates of initial array.
+   Завдання: реалізувати функцію findDuplicates, щоб вона повертала масив, що містить дублікати початкового масиву.
+
+-->
+
+<html>
+<head>
+    <title>JavaScript</title>
+
+    <script type="text/javascript">
+
+        function findDuplicates(arr) {
+            let duplicates = [];
+            for (let i = 0; i < arr.length; i++){
+           let one = initialArr.filter(item => item == i);
+           if (one.length > 1){
+            duplicates.push(one[0]);
+           }
+          }
+          return duplicates;
+        }
+
+        var initialArr = [1, 2, 3, 1, 5, 3, 4, 1];
+
+        var duplicates = findDuplicates(initialArr);
+
+        console.log("Initial array: " + initialArr);
+        console.log("</br>");
+        console.log("Duplicate elements: "+duplicates);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

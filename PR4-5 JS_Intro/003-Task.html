@@ -1,0 +1,41 @@
+<!--
+
+   Task: Implement function findStringOnce so it returns array that contains unique elemnts of initial array.
+    
+   Try to use obj(line 16), and function Object.Keys(line 20).
+
+   Завдання: реалізувати функцію findStringOnce, щоб вона повертала масив, який містить унікальні елементи початкового масиву.
+    
+   Спробуйте використати obj (рядок 16) і функцію Object.Keys (рядок 20).
+-->
+
+<html>
+<head>
+    <title>���������� JavaScript</title>
+
+    <script type="text/javascript">
+
+        function findStringOnce(arr) {
+            var obj = {};
+
+            initialArr.forEach(function (item) {
+                obj[item] = true; // Додаємо унікальні елементи у об'єкт як ключі
+            });
+
+            return Object.keys(obj);
+        }
+
+        
+        var initialArr = ["First", "Second", "First", "Third", "Fourth", "Fourth" ];
+
+        var strings = findStringOnce(initialArr);
+
+        console.log("Initial array: " + initialArr.join(', '));
+        console.log("</br>");
+        console.log("Unique elements: " + strings.join(', '));
+
+    </script>
+</head>
+<body>
+</body>
+</html>
