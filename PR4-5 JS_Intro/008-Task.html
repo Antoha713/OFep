@@ -1,0 +1,24 @@
+﻿<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script>
+    function operate(operator, operand1, operand2) {
+      return operator(operand1, operand2);
+    }
+
+    function add(operand1, operand2) {
+      return operand1 + operand2;
+    }
+
+    function multiply(operand1, operand2) {
+      return operand1 * operand2;
+    }
+
+    var i = operate(add, operate(add, 2, 3), operate(multiply, 4, 5));// (2 + 3) + (4 * 5)
+
+    document.write(i); // Output: 25
+  </script>
+</body>
+</html>

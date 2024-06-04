@@ -1,0 +1,45 @@
+﻿<!--
+
+    Create Circle class. This class should contain radius, PI properties and also area operation that calc 
+    square of the circle and static operation MAX, takes 2 circles and returns bigger one.
+
+    Створити клас Circle. Цей клас має містити радіус, властивості PI, а також операцію площі, яка обчислюється
+    квадрат кола та статична операція MAX, бере 2 кола та повертає більше.
+-->
+
+<html>
+<head>
+    <title>Circle</title>
+</head>
+<body>
+    <script>
+
+class Circle {
+      constructor(radius) {
+        this.r = radius;
+      }
+
+      static PI = 3.14159; 
+
+      area() {
+        return Circle.PI * Math.pow(this.r, 2); 
+      }
+
+      static max(circle1, circle2) { 
+        return circle1.area() > circle2.area() ? circle1 : circle2;
+      }
+    }
+
+        // Create circle with R = 10
+        var circle1 = new Circle(10);
+        // Write its square
+        document.write("circle1 area = " + circle1.area());
+        // Create another circlew with R=15
+        var circle2 = new Circle(15);
+        // Find biggest one
+        var maxCircle = Circle.max(circle1, circle2);
+        // Write radius
+        document.write("</br>max circle radius = " + maxCircle.r); // 15
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!--
+
+    Implement copyPropertyNamesToArray function. The second param should be optional.
+    The function returns arr of properties. If the second param exists it should be populated with obj properties.
+	
+	Hints: instanceof, typeof, throw new Error("")
+
+    Реалізуйте функцію copyPropertyNamesToArray. Другий параметр має бути необов’язковим.
+    Функція повертає arr властивостей. Якщо другий параметр існує, його слід заповнити властивостями obj.
+
+    Підказки: instanceof, typeof, throw new Error("")
+
+-->
+
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script>
+    
+    function copyPropertyNamesToArray(obj, arr) {
+     
+      if (!arr) {
+        arr = [];
+      }
+
+      for (const prop of Object.keys(obj)) {
+        arr.push(prop);
+      }
+      return arr;
+    }
+
+    var obj1 = { a: 10, b: 20 };
+    var obj2 = { c: 30, d: 40 };
+
+    var a = copyPropertyNamesToArray(obj1); 
+
+    copyPropertyNamesToArray(obj2, a);
+
+    alert(a); // Output: "a,b,c,d"
+  </script>
+</body>
+</html>

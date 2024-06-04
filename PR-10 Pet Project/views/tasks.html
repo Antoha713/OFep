@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express App: Catalog </title>
+</head>
+<body>
+    <a href="/">Home</a>&ensp;<a href="/about">About</a>
+    <h3>Task</h3>
+    <input type="button" value="Create new" onclick='document.location="/create.html"'>
+
+    <ul id="tasksContainer">
+    </ul>
+
+    <script>
+        window.onload = (event) => {
+            fillTasksList();
+
+        };
+        
+        function fillTasksList(){
+            fetch('/api/tasks')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                const container = document.getElementById('tasksContainer');
+                data.forEach(item => {
+                    const newLiItem = `<li><em><input type="button" value="Delete" onclick="deleteTask(${item.id})"></em>
+                        <em><input type="button" value="Update" onclick="updateTask(${item.id})"></em>${item.name}</li>`;
+                    container.insertAdjacentHTML('beforeend', newLiItem);
+                })
+            })
+            .catch(error => {
+                console.log(error);
+                alert(error);
+            });
+        }        
+
+        function deleteTask(id){
+            const confirmResult = confirm("Do you want to delete this task?");
+            if(!confirmResult){return;}
+
+            
+            fetch(`/api/tasks/${id}`, {
+                method: 'DELETE'})
+                .then(document.location = "/tasks")
+                .catch(error => {
+                    console.log(error);
+                    alert(error);
+                });
+        }
+
+        function updateTask(id){
+            const newTaskName = prompt('What the new task name?');
+
+            if(!newTaskName){return;}
+
+            fetch(`/api/tasks/${id}`, {
+                method: 'PUT',
+                headers: {
+                        'Content-Type': "application/json"
+                    },
+                body: JSON.stringify({ name: newTaskName})
+                })
+                .then(document.location = "/tasks")
+                .catch(error => {
+                    console.log(error);
+                    alert(error);
+                });
+
+        }
+</script>
+</body>
+</html>

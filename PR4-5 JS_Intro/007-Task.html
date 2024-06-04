@@ -1,0 +1,41 @@
+﻿<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script>
+    function sum(arr) {
+
+  if (Array.isArray(arr)) {
+
+    let totalSum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (typeof arr[i] === 'number') {
+        totalSum += arr[i];
+      } else {
+        totalSum += 0;
+      }
+    }
+    return totalSum;
+  } else if (typeof arr === 'object' && arr.length !== undefined) {
+    let totalSum = 0;
+    for (const key in arr) {
+      if (typeof arr[key] === 'number') {
+        totalSum += arr[key];
+      } else {
+        totalSum += 0;
+      }
+    }
+    return totalSum;
+  } else {
+  }
+}
+
+var result = sum([1, 2, "string", 3]);
+alert(result); // Output: 6 
+
+result = sum({ "0": 5, "1": 10, "2": 15, length: 3 });
+alert(result); // Output: 33 
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!-- 
+
+    Compose function-ctor Adder(startingValue).
+    Instances of this function should contain aggregation value of user input.
+
+    Specification:
+    - function should hold current value. Init internal property with startingValue param.
+    - addInput() operation shows prompt and sum user input with current value.
+    - showValue() write current value.
+
+    Складіть функцію-ctor Adder(startingValue).
+    Екземпляри цієї функції повинні містити агрегаційне значення введених користувачем даних.
+
+    Специфікація:
+    - функція повинна зберігати поточне значення. Ініціалізувати внутрішню властивість за допомогою параметра beginValue.
+    - операція addInput() показує підказку та підсумовує введені користувачем дані з поточним значенням.
+    - showValue() запис поточного значення.
+
+-->
+<html>
+<head>
+    <title>Adder</title>
+</head>
+<body>
+    <script>
+
+        function Adder(startingValue) {
+            this.currentValue = startingValue;
+
+      this.addInput = function() {
+        var userInput = parseInt(prompt("Enter a number to add:")); 
+        this.currentValue += userInput;
+      }
+
+      this.showValue = function() {
+        document.write("Current value: " + this.currentValue + "<br>");
+      }
+        }
+
+        var adder = new Adder(1); // init value - 1
+        adder.addInput(); // add some value
+        adder.addInput(); // add another value
+        adder.showValue(); // write current value
+
+    </script>
+</body>
+</html>
+

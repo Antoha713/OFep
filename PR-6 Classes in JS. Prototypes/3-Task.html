@@ -1,0 +1,69 @@
+﻿<!--
+
+    Implement Calculator ctor, that creates extendable calc objects.
+    By default Calculator supports "+" and "-" (line 24 and 25)
+
+    Extend functionality with addOperation operation to add new functions (line 27 and 28).
+
+    Реалізуйте Calculator ctor, який створює розширювані об’єкти calc.
+    За замовчуванням Калькулятор підтримує "+" і "-" (рядки 24 і 25)
+
+    Розширте функціональні можливості за допомогою операції addOperation, щоб додати нові функції (рядки 27 і 28).
+
+-->
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+
+        // Constructor of Calculator type
+        function Calculator() {
+            this.operations = {
+        "+": (a, b) => a + b,
+        "-": (a, b) => a - b,
+      };
+        }
+
+        Calculator.prototype.addOperation = function(symbol, operationFn) {
+      if (typeof symbol !== 'string' || symbol.length !== 1) {
+        throw new Error('Invalid operation symbol. Must be a single character string.');
+      }
+      if (typeof operationFn !== 'function') {
+        throw new Error('Invalid operation function. Must be a function.');
+      }
+      this.operations[symbol] = operationFn;
+    };
+
+    Calculator.prototype.calculate = function(expression) {
+      const [operand1, operator, operand2] = expression.split(' ');
+
+      if (!this.operations[operator]) {
+        throw new Error(`Unsupported operation: '${operator}'.`);
+      }
+
+      const num1 = parseFloat(operand1);
+      const num2 = parseFloat(operand2);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        throw new Error('Invalid operands. Must be numbers.');
+      }
+
+      return this.operations[operator](num1, num2);
+    };
+
+        var calc = new Calculator();
+
+        alert(calc.calculate("3 + 7")); // output 10
+        alert(calc.calculate("7 - 3")); // output 4
+
+       calc.addOperation("*", function (a, b) { return a * b; });
+        calc.addOperation("/", function (a, b) { return a / b; });
+
+        alert(calc.calculate("3 * 7")); // output 21
+        alert(calc.calculate("8 / 4")); // output 2
+    </script>
+</body>
+</html>
